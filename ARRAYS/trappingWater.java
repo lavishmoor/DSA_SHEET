@@ -1,48 +1,41 @@
-package DSA.ARRAYS;
-
+package ARRAYS;
 public class trappingWater {
 
-    public static int trappedWater(int height[]) {
+    public static void trappingWater(int height[]) {
+
         int n = height.length;
 
-        // for left most max boudary
-        int leftMax[] = new int[n];
-        leftMax[0] = height[0];
+        int leftmax[] = new int[n];
+        leftmax[0] = height[0];
 
         for (int i = 1; i < n; i++) {
-            leftMax[i] = Math.max(height[i], leftMax[i - 1]);
+
+            leftmax[i] = Math.max(height[i], leftmax[i - 1]);
 
         }
 
-        // for right most max boudary
-
-        int rightMax[] = new int[n];
-        rightMax[n - 1] = height[n - 1];
+        int rightmax[] = new int[n];
+        rightmax[n - 1] = height[n - 1];
 
         for (int i = n - 2; i >= 0; i--) {
-
-            rightMax[i] = Math.max(height[i], rightMax[i + 1]);
-
+            rightmax[i] = Math.max(height[i], rightmax[i + 1]);
         }
-
-        // loop
 
         int trappedWater = 0;
         for (int i = 0; i < n; i++) {
 
-            int waterlevel = Math.min(leftMax[i], rightMax[i]);
+            int waterlevel = Math.min(rightmax[i], leftmax[i]);
 
-            trappedWater = trappedWater + waterlevel - height[i];
+            trappedWater += waterlevel - height[i];
+
         }
 
-        return trappedWater;
-
+        System.out.println(trappedWater);
     }
 
     public static void main(String[] args) {
-        int height[] = { 4, 2, 0, 6, 3, 2, 5 };
-        System.out.println("the trapped water level is : "+trappedWater(height));
-
+        int height[] = { 1,8,6,2,5,4,8,3,7};
+        trappingWater(height);
     }
 
 }

@@ -1,39 +1,31 @@
-package DSA.ARRAYS;
-
-import java.util.Arrays;
-
+package ARRAYS;
 public class maxSubarrays {
-    public static void maxSubarrays(int arr[]) {
-        int current = 0;
-        int max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < arr.length; i++) {
+    public static void maxSubarrays(int nums[]) {
+        int n = nums.length;
 
-            for (int j = i; j < arr.length; j++) {
+        int maxSum = Integer.MIN_VALUE;
+        int current =0;
 
-                 current = 0;
-                for (int k = i; k <= j; k++) {
+        for (int i=0;i<n;i++){
+            current=current+nums[i];
 
-                    current=current+arr[k];
-
-                }
-               
-                if (max<current){
-                    max=current;
-                }
+            if (current<0){
+                current=0;
             }
+
+             maxSum=Math.max(current, maxSum);
+
+
         }
-        System.out.println("max sum = "+max);
+        System.out.println(maxSum);
 
     }
 
     public static void main(String[] args) {
 
-        int arr[] = { 1, -2, 6, -1, 3 };
-        System.out.println(Arrays.toString(arr));
-
-         maxSubarrays(arr);
-
+        int nums[] = { 2,7,6,1,4,5 };
+        maxSubarrays(nums);
     }
 
 }

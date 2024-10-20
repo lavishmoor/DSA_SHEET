@@ -1,33 +1,37 @@
-package DSA.ARRAYS;
-
+package ARRAYS;
 import java.util.Arrays;
 
 public class reverse {
 
-    public static void reverse(int arr[]){
-        int start=0;
-        int end=arr.length-1;
+    public static void reverseArray(int arr[]) {
 
-        while(start <end){
+        int n = arr.length;
 
-            int temp = arr[start];
-            arr[start]=arr[end];
-            arr[end]=temp;
+        int first = 0;
+        int last = n - 1;
 
-            start++;
-            end--;
+        while (first < last) {
+
+            int temp = arr[first];
+            arr[first] = arr[last];
+            arr[last] = temp;
+            first++;
+            last--;
         }
-        System.out.println(Arrays.toString(arr));
 
+        // for printing new array
+
+        System.out.print("after reverse : " + Arrays.toString(arr));
 
     }
+
     public static void main(String[] args) {
-        
-        int arr[]={2,4,6,4,1};
 
-        reverse(arr);
+        int arr[] = { 4, 5, 1, 2 };
+        System.out.println("before reverse :" + (Arrays.toString(arr)));
 
+        reverseArray(arr);
 
     }
-    
+
 }
